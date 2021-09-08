@@ -36,8 +36,8 @@ async def client_start(bot=False):
             path_ = Path(a.name)
             plugin_name = path_.stem
             load_plugins(plugin_name.replace(".py", ""))
-    print('----------------------- INITIATED VC BOT ------------------------')
-    print('        Logged in as User =>> {}'.format((await UB.get_me()).first_name))
+    print('--------------- INITIALITATION VC BOT ---------------')
+    print('    Logged in as User =>> {}'.format((await UB.get_me()).first_name))
     if bot:
         print('    Logged in to Bot =>> {}'.format((await Bot.get_me()).first_name))
     print('-----------------------------------------------------')
