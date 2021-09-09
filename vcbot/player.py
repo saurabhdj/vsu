@@ -16,9 +16,6 @@ from pytgcalls.types.input_stream import (
     InputAudioStream,
     InputVideoStream
 )
-#
-# base from https://github.com/TeamUltroid/Ultroid/blob/dev/vcbot/__init__.py
-# Thanks to TeamUltroid :)
 
 ms = {}
 
@@ -42,7 +39,7 @@ async def on_stream_end(client: PyTgCalls, update: Update):
         if not suc:
             await UB.send_message(update.chat_id, str(err))
         else:
-            await UB.send_message(update.chat_id, "Now playing: {}\nRequested by: {}".format(video, user.mention(style="md")))
+            await UB.send_message(update.chat_id, "💡 now playing: {}\n🎧 request by: {}".format(video, user.mention(style="md")))
         return True
     else:
         await player.leave_vc()
@@ -166,15 +163,15 @@ class Player:
         else:
             data = [vid, is_path, m.from_user]
             pos = queues.add(self._current_chat, data)
-            await m.reply(f"Added to queue #{pos}")
+            await m.reply(f"#️⃣ added to queue #{pos}")
             return False
             
     async def leave_vc(self):
         await group_calls.leave_group_call(self._current_chat)
         pid = await self.terminate_ffmpeg()
-        status = f"Terminated FFmpeg with PID `{pid}`" if \
+        status = f"🔺 terminated ffmpeg with pid `{pid}`" if \
             pid else ""
-        status += "\nSuccessfully left vc!"
+        status += "\n✅ disconnected from vc !"
         if self.is_playing:
             self.meta["is_playing"] = False
         self.meta["is_live"] = False
@@ -192,14 +189,14 @@ class Player:
                 return await x.pid
     
     def clear_played(self):
-        LOG.info("Deleting additional files")
+        LOG.info("deleting additional files")
         files = self.to_delete
         for i in files:
             try:
                 os.remove(i)
-                LOG.info("Removed {}".format(i))
+                LOG.info("removed {}".format(i))
             except BaseException:
-                LOG.info("Couldn't remove {}".format(i))
+                LOG.info("couldn't remove {}".format(i))
             self.meta["to_delete"].remove(i)
     
     def add_to_trash(self, file):
