@@ -20,9 +20,9 @@ from pytgcalls.types.input_stream import (
 
 
 
-@UB.on_message(filters.user(Var.SUDO) & filters.command('stream', '!'))
+@UB.on_message(filters.user(Var.SUDO) & filters.command('vstream', '!'))
 async def stream_msg_handler(_, m: Message):
-    status = "Processing.."
+    status = "💡 streaming the video, please wait !"
     msg = await m.reply(status)
     player = Player(m.chat.id)
     stream_url = "https://feed.play.mv/live/10005200/7EsSDh7aX6/master.m3u8"
@@ -68,4 +68,3 @@ async def stream_msg_handler(_, m: Message):
         ),
         stream_type=StreamType().pulse_stream,
     )
-
