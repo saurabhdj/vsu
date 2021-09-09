@@ -34,14 +34,6 @@ you can change who's people can access the userbot command, try to fork this rep
 ## HOST ON RAILWAY 🚄
 [![Deploy+on+Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/levina-lab/video-stream2&envs=API_ID,API_HASH,BOT_TOKEN,SESSION,SUDO)
 
-## Known Issues 🐛
-
-- ~~video and audio sync issues.~~ (fixed)
-- bug on queue feature.
-- low audio quality.
-- some stream links may not be streamed.
-- breaks & lags in video when you play live videos.
-
 ## Special Credits 💖
 
 - [Levina](https://t.me/dlwrml) Dev
