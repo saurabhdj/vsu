@@ -30,12 +30,12 @@ async def play_msg_handler(_, m: Message):
             is_file = True
             link = m.reply_to_message
         elif m.reply_to_message.text:
-            if match := re.search(r'((https?:\/\/)?(www\.)?(youtube|youtu|youtube-nocookie)\.(com|be)\/(watch\?v=|embed\/|v\/|.+\?v=)?([^&=%\?]{11}))', m.reply_to_message.text):
+            if match = re.search(r'((https?:\/\/)?(www\.)?(youtube|youtu|youtube-nocookie)\.(com|be)\/(watch\?v=|embed\/|v\/|.+\?v=)?([^&=%\?]{11}))', m.reply_to_message.text):
                 is_file = False
                 link = match.group(1)
         # todo
     if is_live:
-        return await m.reply("**Error**: This is a live link.\nTip: use !stream command.")
+        return await m.reply("🚫 **error**: this is a live link.\n\n💡 tips: use !vstream command.")
     if player.is_live:
         return await m.reply("🚫 **error**: any live stream is already going in this chat.\n\n💡 execute command `!end` and play the file again.")
     status = await m.reply("📥 downloading video...")
