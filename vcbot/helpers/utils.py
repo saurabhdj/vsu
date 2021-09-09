@@ -143,7 +143,7 @@ def get_resolution(info_dict):
 
 def the_hook(meta):
     if meta['status'] == 'finished':
-        LOG.info('Done downloading, now converting ...')
+        LOG.info('downloading done, now converting ...')
     
 
 async def yt_download(ytlink):
