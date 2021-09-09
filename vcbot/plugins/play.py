@@ -7,7 +7,7 @@ from pyrogram.types import Message
 from vcbot.helpers.utils import is_ytlive
 
 
-@UB.on_message(filters.user(Var.SUDO) & filters.command('play', '!'))
+@UB.on_message(filters.user(Var.SUDO) & filters.command('stream', '!'))
 async def play_msg_handler(_, m: Message):
     chat_id = m.chat.id
     player = Player(chat_id)
@@ -37,14 +37,13 @@ async def play_msg_handler(_, m: Message):
     if is_live:
         return await m.reply("**Error**: This is a live link.\nTip: use !stream command.")
     if player.is_live:
-        return await m.reply("**Error**: A Live stream is already going on this chat.\nPlease `!leave` and play the file again.")
-    status = await m.reply("Downloading...")
+        return await m.reply("🚫 **error**: any live stream is already going in this chat.\n\n💡 execute command `!end` and play the file again.")
+    status = await m.reply("📥 downloading video...")
     p = await player.play_or_queue(link, m, is_file)
-    await status.edit("Playing.." if p else "Queued")
+    await status.edit("💡 **video streaming started!**\n\n» **join to video chat on the top to watch the video.**" if p else "#️⃣ » your request has been added to queue")
 
-@UB.on_message(filters.user(Var.SUDO) & filters.command('leave', '!'))
+
+@UB.on_message(filters.user(Var.SUDO) & filters.command('end', '!'))
 async def leave_handler(_, m: Message):
     player = Player(m.chat.id)
     await player.leave_vc()
-
-
