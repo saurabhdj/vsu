@@ -39,7 +39,7 @@ async def client_start(bot=False):
     print('----------------- INITIATED VC BOT ------------------')
     print('     Logged in as User =>> {}'.format((await UB.get_me()).first_name))
     if bot:
-    print('     Logged in as Bots =>> {}'.format((await Bot.get_me()).first_name))
+        print('     Logged in as Bots =>> {}'.format((await Bot.get_me()).first_name))
     print('-----------------------------------------------------')
     await idle()
 
