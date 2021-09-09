@@ -1,4 +1,4 @@
-import re
+mport re
 from vcbot import UB
 from vcbot.config import Var
 from pyrogram import filters
@@ -7,7 +7,7 @@ from pyrogram.types import Message
 from vcbot.helpers.utils import is_ytlive
 
 
-@UB.on_message(filters.user(Var.SUDO) & filters.command('stream', '!'))
+@UB.on_message(filters.user(Var.SUDO) & filters.command('play', '!'))
 async def play_msg_handler(_, m: Message):
     chat_id = m.chat.id
     player = Player(chat_id)
@@ -29,19 +29,14 @@ async def play_msg_handler(_, m: Message):
         if m.reply_to_message.video:
             is_file = True
             link = m.reply_to_message
-        elif m.reply_to_message.text:
-            if match == re.search(r'((https?:\/\/)?(www\.)?(youtube|youtu|youtube-nocookie)\.(com|be)\/(watch\?v=|embed\/|v\/|.+\?v=)?([^&=%\?]{11}))', m.reply_to_message.text):
-                is_file = False
-                link = match.group(1)
         # todo
     if is_live:
-        return await m.reply("🚫 **error**: this is a live link.\n\n💡 tips: use !vstream command.")
+        return await m.reply("🚫 **error**: this is a live link.\ntips: use !stream command.")
     if player.is_live:
-        return await m.reply("🚫 **error**: any live stream is already going in this chat.\n\n💡 execute command `!end` and play the file again.")
+        return await m.reply("**error**: a live stream is already going on this chat.\n\ntype `!leave` and play the file again.")
     status = await m.reply("📥 downloading video...")
     p = await player.play_or_queue(link, m, is_file)
-    await status.edit("💡 **video streaming started!**\n\n» **join to video chat on the top to watch the video.**" if p else "#️⃣ » your request has been added to queue")
-
+    await status.edit("💡 video streaming started\n\n» join to video chat on the top to watch streaming." if p else "#️⃣ » your request has been added to the queue.")
 
 @UB.on_message(filters.user(Var.SUDO) & filters.command('end', '!'))
 async def leave_handler(_, m: Message):
