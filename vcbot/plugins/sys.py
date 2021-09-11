@@ -1,12 +1,12 @@
 import os
 import time
-from pyrogram import filters, Client
+from pyrogram import filters
 from datetime import datetime
 from pyrogram.types import Message
 from vcbot import UB, group_calls, StartTime
 from vcbot.helpers.utils import get_readable_time
 
-@Client.on_message(filters.command('ping', '!'))
+@UB.on_message(filters.command('ping', '!'))
 async def ping_msg_handler(_, m: Message):
     to_be_edited = await m.reply('`pinging..`')
     start_ms = datetime.now()
@@ -16,7 +16,7 @@ async def ping_msg_handler(_, m: Message):
     calls_ping = await group_calls.ping
     await to_be_edited.edit('🏓 **pong**\n`⟶` ms: `{}`\n`⟶` server ping: `{}`\n`⟶` uptime: {}'.format(ms, round(calls_ping, 2), uptime))
 
-@Client.on_message(filters.command('logs', '!'))
+@UB.on_message(filters.command('logs', '!'))
 async def ping_msg_handler(_, m: Message):
     bot_log_path = 'bot.log'
     ffmpeg_log_path = 'ffmpeg.log'
