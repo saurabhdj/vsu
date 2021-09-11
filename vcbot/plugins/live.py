@@ -5,7 +5,7 @@ import traceback
 from asyncio import sleep
 from pytgcalls.exceptions import GroupCallNotFound
 from vcbot.config import Var
-from pyrogram import filters, Client
+from pyrogram import filters
 from vcbot.player import Player
 from pyrogram.types import Message
 from vcbot import UB, group_calls
@@ -20,7 +20,7 @@ from pytgcalls.types.input_stream import (
 
 
 
-@Client.on_message(filters.user(Var.SUDO) & filters.command('stream', '!'))
+@UB.on_message(filters.user(Var.SUDO) & filters.command('stream', '!'))
 async def stream_msg_handler(_, m: Message):
     status = "💡 youtube live streaming detected, wait for start !"
     msg = await m.reply(status)
