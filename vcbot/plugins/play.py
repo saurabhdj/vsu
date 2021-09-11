@@ -1,13 +1,13 @@
 import re
 from vcbot import UB
 from vcbot.config import Var
-from pyrogram import filters, Client
+from pyrogram import filters
 from vcbot.player import Player
 from pyrogram.types import Message
 from vcbot.helpers.utils import is_ytlive
 
 
-@Client.on_message(filters.user(Var.SUDO) & filters.command('play', '!'))
+@UB.on_message(filters.user(Var.SUDO) & filters.command('play', '!'))
 async def play_msg_handler(_, m: Message):
     chat_id = m.chat.id
     player = Player(chat_id)
@@ -42,7 +42,7 @@ async def play_msg_handler(_, m: Message):
     p = await player.play_or_queue(link, status, is_file)
     await status.edit("💡 video streaming started\n\n» join to video chat on the top to watch streaming." if p else "#️⃣ » your request has been added to the queue.")
 
-@Client.on_message(filters.user(Var.SUDO) & filters.command('leave', '!'))
+@UB.on_message(filters.user(Var.SUDO) & filters.command('end', '!'))
 async def leave_handler(_, m: Message):
     player = Player(m.chat.id)
     await player.leave_vc()
