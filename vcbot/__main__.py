@@ -23,24 +23,24 @@ def load_plugins(plugin_name):
 
 async def client_start(bot=False):
     print('\n')
-    print('------------------- Initalizing VC BOT ---------------------')
+    print('--------------- Initalizing VC BOT ----------------')
     # Assistant bot
     if bot:
         await Bot.start()
     await UB.start()
     await group_calls.start()
-    print('----------------------- DONE ------------------------')
-    print('--------------------- Importing ---------------------')
+    print('----------------------- DONE ----------------------')
+    print('----------------- Importing Module ----------------')
     for name in files:
         with open(name) as a:
             path_ = Path(a.name)
             plugin_name = path_.stem
             load_plugins(plugin_name.replace(".py", ""))
-    print('----------------------- INITIATED VC BOT ------------------------')
-    print('             Logged in as User =>> {}'.format((await UB.get_me()).first_name))
+    print('---------------- INITIATED VC BOT -----------------')
+    print('     Logged in to User =>> {}'.format((await UB.get_me()).first_name))
     if bot:
-        print('             and Bot =>> {}'.format((await Bot.get_me()).first_name))
-    print('-----------------------------------------------------')
+        print('     Logged in to Bots =>> {}'.format((await Bot.get_me()).first_name))
+    print('---------------------------------------------------')
     await idle()
 
 if __name__ == '__main__':
