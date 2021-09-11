@@ -42,12 +42,12 @@ async def on_stream_end(client: PyTgCalls, update: Update):
         player.clear_played()
         next = queues.get(update.chat_id)
         video , is_path, user = next
-        mess = await UB.send_message(update.chat_id, "Processing Next Song..")
+        mess = await UB.send_message(update.chat_id, "🔁 processing next song..")
         suc, err = await player.play_file(video, mess, is_path=is_path, change=True)
         if not suc:
             await UB.send_message(update.chat_id, str(err))
         else:
-            await UB.send_message(update.chat_id, "Now playing: {}\nRequested by: {}".format(video, user.mention(style="md")))
+            await UB.send_message(update.chat_id, "💡 now playing: {}\n🎧 request by: {}".format(video, user.mention(style="md")))
         return True
     else:
         await player.leave_vc()
@@ -116,7 +116,7 @@ class Player:
             if not latest:
                 continue
             else:
-                if match := re.search(r'\[ffmpeg\] Merging formats into "(.+\.\w+)"', " ".join(latest)):
+                if match := re.search(r'\[ffmpeg\] merging format into "(.+\.\w+)"', " ".join(latest)):
                     file_name = match.group(1)
                 if file_name:
                     break
@@ -178,7 +178,7 @@ class Player:
                 percentage = math.floor(elapsed_time * 100 / duration)
                 if last_percentage != percentage:
                     try:
-                        await m.edit(f"Converting {percentage}%\nETA: {eta}\nSpeed: {speed}\nFPS: {fps}")
+                        await m.edit(f"♻️ Converting: {percentage}%\n\n⏱ ETA: {eta}\n⚡ SPEED: {speed}\n\n💠 FPS: {fps}")
                     except MessageNotModified:
                         pass
                     await asyncio.sleep(3)
@@ -245,15 +245,15 @@ class Player:
         else:
             data = [vid, is_path, m.from_user]
             pos = queues.add(self._current_chat, data)
-            await m.reply(f"Added to queue #{pos}")
+            await m.reply(f"💡 added to queue position » `{pos}`")
             return False
             
     async def leave_vc(self):
         await group_calls.leave_group_call(self._current_chat)
         pid = await self.terminate_ffmpeg()
-        status = f"Terminated FFmpeg with PID `{pid}`" if \
+        status = f"terminated FFmpeg with PID `{pid}`" if \
             pid else ""
-        status += "\nSuccessfully left vc!"
+        status += "\n✅ successfully left vc !"
         if self.is_playing:
             self.meta["is_playing"] = False
         self.meta["is_live"] = False
