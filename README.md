@@ -21,20 +21,13 @@ you can change who's people can access the userbot command, try to fork this rep
 - !logs - send you the userbot logs
 - !term (for dev) - to know about this, see on this [file](https://github.com/levina-lab/video-stream2/blob/main/vcbot/plugins/run_cmd.py)
 
-## ✨ Features
-
-- HD Quality for video streaming
-- Stable video streaming
-- Good video & audio sync
-- Support a live stream video
-
 ## HOST ON HEROKU 💜
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/levina-lab/video-stream2)
 
 ## HOST ON RAILWAY 🚄
 [![Deploy+on+Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/levina-lab/video-stream2&envs=API_ID,API_HASH,BOT_TOKEN,SESSION,SUDO)
 
-## VPS Deployment
+## VPS Deployment 📡
 ```sh
 - sudo apt update && upgrade -y
 - sudo apt install python3-pip -y virtualenv
