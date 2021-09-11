@@ -1,5 +1,8 @@
-from os import getenv, environ
+from os import path, getenv, environ
 from dotenv import load_dotenv
+
+if path.exists("local.env"):
+    load_dotenv("local.env")
 
 load_dotenv()
 
