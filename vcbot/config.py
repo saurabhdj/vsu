@@ -10,6 +10,7 @@ class Var(object):
     API_ID = int(getenv('API_ID'))
     API_HASH = str(getenv('API_HASH'))
     BOT_TOKEN = getenv('BOT_TOKEN')
+    BOT_USERNAME = getenv("BOT_USERNAME", "veezvidstreambot")
     SESSION = str(getenv('SESSION'))
     SUDO =  list(int(x) for x in getenv('SUDO', '').split())
     FPS = int(getenv('FPS', 20))
