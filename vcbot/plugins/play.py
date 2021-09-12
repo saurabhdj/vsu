@@ -35,14 +35,14 @@ async def play_msg_handler(_, m: Message):
                 link = match.group(1)
         # todo
     if is_live:
-        return await m.reply("**Error**: This is a live link.\nTip: use !stream command.")
+        return await m.reply("🚫 **error**: this is a live link.\n\n💡 tips: use !stream command.")
     if player.is_live:
-        return await m.reply("**Error**: A Live stream is already going on this chat.\nPlease `!leave` and play the file again.")
-    status = await m.reply("Downloading...")
+        return await m.reply("🚫 **error**: any ive stream is already going on this chat.\n\nexecute command `!leave` and play the file again.")
+    status = await m.reply("📥 downloading video...")
     p = await player.play_or_queue(link, status, is_file)
-    await status.edit("Playing.." if p else "Queued")
+    await status.edit("💡 video streaming started\n\n» join to video chat on the top to watch streaming." if p else "#️⃣ » your request has been added to the queue.")
 
-@UB.on_message(filters.user(Var.SUDO) & filters.command('leave', '!'))
+@UB.on_message(filters.user(Var.SUDO) & filters.command('end', '!'))
 async def leave_handler(_, m: Message):
     player = Player(m.chat.id)
     await player.leave_vc()
