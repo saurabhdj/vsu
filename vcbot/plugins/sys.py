@@ -22,13 +22,13 @@ async def ping_msg_handler(_, m: Message):
     ffmpeg_log_path = 'ffmpeg.log'
     if os.path.exists(bot_log_path):
         try:
-            await m.reply_document(bot_log_path, quote=True, caption='📄 **Bot Logs**')
+            await m.reply_document(bot_log_path, quote=True, caption='📄 **bot logs**')
         except:
             os.remove(bot_log_path)
     if os.path.exists(ffmpeg_log_path):
         try:
-            await m.reply_document(ffmpeg_log_path, quote=True, caption='📄 **FFmpeg Logs**')
+            await m.reply_document(ffmpeg_log_path, quote=True, caption='📄 **ffmpeg logs**')
         except:
             os.remove(ffmpeg_log_path)
     if not os.path.exists(bot_log_path) and not os.path.exists(ffmpeg_log_path):
-        await m.reply('📄 **No logs found!**')
+        await m.reply('📄 **no logs found!**')
