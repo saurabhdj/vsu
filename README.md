@@ -22,10 +22,10 @@ you can change who's people can access the userbot command, try to fork this rep
 - !term (for dev) - to know about this, see on this [file](https://github.com/levina-lab/video-stream2/blob/main/vcbot/plugins/run_cmd.py)
 
 ## HOST ON HEROKU 💜
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/levina-lab/video-stream2)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/levina-lab/vsu)
 
 ## HOST ON RAILWAY 🚄
-[![Deploy+on+Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/levina-lab/video-stream2&envs=API_ID,API_HASH,BOT_TOKEN,SESSION,SUDO)
+[![Deploy+on+Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/levina-lab/vsu&envs=API_ID,API_HASH,BOT_TOKEN,SESSION,SUDO)
 
 ## VPS Deployment 📡
 ```sh
