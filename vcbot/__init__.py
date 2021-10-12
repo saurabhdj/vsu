@@ -14,7 +14,7 @@ logging.basicConfig(
 )
 logging.getLogger("pyrogram").setLevel(logging.ERROR)
 logging.getLogger("PyTgCalls").setLevel(logging.WARNING)
-logging.getLogger("youtube_dl").setLevel(logging.WARNING)
+logging.getLogger("yt_dlp").setLevel(logging.WARNING)
 
 queues = Queue()
 
