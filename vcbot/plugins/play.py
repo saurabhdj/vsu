@@ -7,7 +7,7 @@ from pyrogram.types import Message
 from vcbot.helpers.utils import is_ytlive
 
 
-@UB.on_message(filters.user(Var.SUDO) & filters.command('play', '!'))
+@UB.on_message(filters.user(Var.SUDO) & filters.command('vid', '!'))
 async def play_msg_handler(_, m: Message):
     chat_id = m.chat.id
     player = Player(chat_id)
