@@ -4,7 +4,7 @@ import random
 import string
 import asyncio
 import subprocess
-from youtube_dl import YoutubeDL
+from yt_dlp import YoutubeDL
 from pyrogram.types import Message
 
 def generate_hash(N=7):
